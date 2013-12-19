@@ -1,3 +1,3 @@
-angular.module('angularApp').constant('CONFIG', {
+angular.module('delinquoFrontendApp').value('CONFIG', {
   delinquoBaseUrl: 'http://127.0.0.1:9393'
 });

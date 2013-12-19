@@ -2,12 +2,18 @@
 
 describe('Service: delinquo', function () {
 
-  // load the service's module
-  beforeEach(module('delinquoFrontendApp'));
-
   // instantiate service
   var delinquo,
-      httpBackend;
+      httpBackend,
+      mockConfig;
+
+  mockConfig = {
+    delinquoBaseUrl: 'http://someurl'
+  };
+
+  beforeEach(module('delinquoFrontendApp', function($provide) {
+    $provide.value('CONFIG', mockConfig);
+  }));
 
   beforeEach(inject(function (_delinquo_, $httpBackend) {
     delinquo = _delinquo_;
@@ -19,13 +25,13 @@ describe('Service: delinquo', function () {
   });
 
   it('should make a call to the delinquo API', function() {
-    httpBackend.expectGET('http://delinquo.co.uk/project/onesport').respond(200);
+    httpBackend.expectGET(mockConfig.delinquoBaseUrl + '/project/onesport').respond(200);
     delinquo.getProject('onesport', function() {});
     httpBackend.flush();
   });
 
   it('invokes the success callback on success', function() {
-    httpBackend.expectGET('http://delinquo.co.uk/project/onesport').respond(200);
+    httpBackend.expectGET(mockConfig.delinquoBaseUrl + '/project/onesport').respond(200);
     var successSpy = jasmine.createSpy('success');
     delinquo.getProject('onesport', successSpy);
     httpBackend.flush();
@@ -33,7 +39,7 @@ describe('Service: delinquo', function () {
   });
 
   it('invokes the error callback on error', function() {
-    httpBackend.expectGET('http://delinquo.co.uk/project/onesport').respond(400);
+    httpBackend.expectGET(mockConfig.delinquoBaseUrl + '/project/onesport').respond(400);
     var successSpy = jasmine.createSpy('success');
     var errorSpy = jasmine.createSpy('error');
     delinquo.getProject('onesport', successSpy, errorSpy);
@@ -43,7 +49,7 @@ describe('Service: delinquo', function () {
   });
 
   it('passes the response data to the success callback', function() {
-    httpBackend.expectGET('http://delinquo.co.uk/project/onesport').respond(200, {someData: 'someData'});
+    httpBackend.expectGET(mockConfig.delinquoBaseUrl + '/project/onesport').respond(200, {someData: 'someData'});
     var successSpy = jasmine.createSpy('success');
     delinquo.getProject('onesport', successSpy);
     httpBackend.flush();
