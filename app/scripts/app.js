@@ -7,7 +7,7 @@ angular.module('delinquoFrontendApp', [])
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/project/:projectName', {
+      .when('/project/:project', {
         templateUrl: 'views/project.html',
         controller: 'ProjectCtrl'
       })
