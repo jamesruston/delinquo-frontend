@@ -1,22 +1,129 @@
-body {
-    background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
+body{
+    background-color: rgb(245,245,245);
 }
 
-.hero-unit {
-    margin: 50px auto 0 auto;
-    width: 300px;
-    font-size: 18px;
-    font-weight: 200;
-    line-height: 30px;
-    background-color: #eee;
-    border-radius: 6px;
-    padding: 60px;
+h1, h2, h3, h4{
+    text-align: center;
+    display: block;
 }
 
-.hero-unit h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
+li{
+    list-style: none;
+}
+
+ul{
+    padding: 0.4em;
+}
+
+li.fail span{
+    font-weight: bolder;
+    padding-right: 0.5em;
+}
+
+li.fail ul li{
+    padding: 0.4em;
+}
+
+.alert-danger, .fail-line {
+    word-break: break-all;
+}
+
+img#forecast, img#warning {
+    margin: -50%;
+    width:  200%;
+    display: block;
+}
+
+#forecast-wrapper, #warning-wrapper {
+    margin: 0 auto;
+    width: 15%;
+    padding: 0 0 1.5em 0;
+}
+
+.accordion{
+    width: 50%;
+    margin: 0 auto 2em auto;
+}
+
+.accordion-group{
+    border:none;
+    border-radius: 0;
+    margin: 0;
+}
+
+.accordion-heading .accordion-toggle {
+    padding-top: 0.2em;
+    padding-bottom: 0;
+}
+
+.accordion-group > :last-child{
+
+}
+
+.accordion a{
+    text-transform:uppercase;
+    color: rgb(34,34,34);
+    font-weight: bolder;
+    cursor: pointer;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.accordion a:hover{
+    background-color: rgb(235, 235, 235);
+    text-decoration: none;
+}
+
+.accordion-inner{
+    border: 0;
+}
+
+.progress{
+    margin-top: 0.5em;
+    height: 1.9em;
+}
+
+.progress-bar-success {
+    background-color: #8EC98E;
+}
+
+.progress-bar-danger {
+    background-color: #F79F9C;
+}
+
+.dl-horizontal dd {
+    margin-left: 80px;
+}
+
+.dl-horizontal dt {
+    width: auto;
+}
+
+.panel{
+    margin: 1.5em 1.5em 0em 1.5em;
+    word-break: break-all;
+}
+
+@media (max-width: 650px) {
+    .run-fails {
+        display: none;
+    }
+    #forecast-wrapper, #warning-wrapper{
+        width: 25%;
+    }
+    .accordion {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+}
+
+@media (min-width: 651px) and (max-width: 1000px){
+    #forecast-wrapper, #warning-wrapper{
+        width: 25%;
+    }
+    .accordion {
+        width: 75%;
+        margin: 0 auto;
+    }
+
 }
