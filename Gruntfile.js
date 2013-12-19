@@ -19,7 +19,8 @@ module.exports = function (grunt) {
   // configurable paths
   var yeomanConfig = {
     app: 'app',
-    dist: 'dist'
+    dist: 'dist',
+    config: 'config'
   };
 
   try {
@@ -27,6 +28,7 @@ module.exports = function (grunt) {
   } catch (e) {}
 
   grunt.initConfig({
+    env: process.env.GRUNT_ENV || 'dev',
     yeoman: yeomanConfig,
     watch: {
       coffee: {
@@ -238,6 +240,15 @@ module.exports = function (grunt) {
     },
     // Put files not handled in other tasks here
     copy: {
+      config: {
+        files: [{
+          cwd: '<%= yeoman.config %>',
+          expand: true,
+          rename: function(dest, src) { return dest + '/config.js'; },
+          src: '<%= env %>.js',
+          dest: '<%= yeoman.app %>/scripts/config'
+        }]
+      },
       dist: {
         files: [{
           expand: true,
@@ -270,15 +281,18 @@ module.exports = function (grunt) {
     concurrent: {
       server: [
         'coffee:dist',
-        'copy:styles'
+        'copy:styles',
+        'copy:config'
       ],
       test: [
         'coffee',
-        'copy:styles'
+        'copy:styles',
+        'copy:config'
       ],
       dist: [
         'coffee',
         'copy:styles',
+        'copy:config',
         'imagemin',
         'svgmin',
         'htmlmin'
