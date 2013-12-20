@@ -1,11 +1,11 @@
 <h1>Onesport</h1>
 <div id="forecast-wrapper">
-    <!--TODO: set a real forecast-->
-    <img id="forecast" src="http://delinquo.co.uk/images/rain.svg"/>
+    <img id="forecast" src="/images/{{runs.failureCount | forecast}}.svg"/>
 </div>
 <div class="accordion" id="runs">
-
     <div ng-repeat="run in runs" class="accordion-group">
+
+
         <div class="accordion-heading">
 
             <a class="accordion-toggle" data-toggle="collapse" data-parent="#runs" href="#run_{{$index}}">
