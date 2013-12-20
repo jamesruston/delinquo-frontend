@@ -3,9 +3,8 @@
     <img id="forecast" src="/images/{{runs.failureCount | forecast}}.svg"/>
 </div>
 <div class="accordion" id="runs">
-    <div ng-repeat="run in runs" class="accordion-group">
 
-
+    <div ng-repeat="run in runs.reverse()" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}" class="accordion-group">
         <div class="accordion-heading">
 
             <a class="accordion-toggle" data-toggle="collapse" data-parent="#runs" href="#run_{{$index}}">
@@ -16,11 +15,11 @@
                 <span class="total-number-of-passes badge">{{run.fails.length}}</span>
           <span class="pull-right">
           Failed
-          <span class="total-number-of-fails badge">{{run.total}}</span>
+          <span class="total-number-of-fails badge">{{run.total_test_count}}</span>
           </span>
                 <div class="progress progress-striped">
-                    <div class="progress-bar progress-bar-success" style="width: {{100 - ((run.fails.length / run.total) * 100)}}%"></div>
-                    <div class="progress-bar progress-bar-danger" style="width: {{(run.fails.length / run.total) * 100}}%"></div>
+                    <div class="progress-bar progress-bar-success" style="width: {{100 - ((run.fails.length / run.total_test_count) * 100)}}%"></div>
+                    <div class="progress-bar progress-bar-danger" style="width: {{(run.fails.length / run.total_test_count) * 100}}%"></div>
                 </div>
             </a>
 
