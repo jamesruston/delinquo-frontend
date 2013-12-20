@@ -43,6 +43,11 @@ img#forecast, img#warning {
 .accordion{
     width: 50%;
     margin: 0 auto 2em auto;
+
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
 }
 
 .accordion-group{
@@ -55,7 +60,12 @@ img#forecast, img#warning {
     padding-top: 0.2em;
     padding-bottom: 0;
 }
-
+accordion-heading.first {
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+}
 .accordion-group > :last-child{
 
 }
@@ -126,4 +136,12 @@ img#forecast, img#warning {
         margin: 0 auto;
     }
 
+}
+
+.label-jasmine {
+    background-color: #F8DE7E;
+}
+
+.label-cucumber {
+    background-color: #73AF59;
 }

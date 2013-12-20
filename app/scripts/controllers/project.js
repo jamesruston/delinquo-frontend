@@ -6,6 +6,7 @@ angular.module('delinquoFrontendApp')
 
     this.serviceSuccess = function (data) {
       $scope.runs = data;
+      $scope.runs.reverse();
       console.log('connecting to: ' + CONFIG.delinquoBaseUrl.replace('http://','ws://') + '/' + $routeParams.project);
       var socket = new WebSocket(CONFIG.delinquoBaseUrl.replace('http://','ws://') + '/project/' + $routeParams.project);
       socket.onopen = function(){
@@ -15,6 +16,8 @@ angular.module('delinquoFrontendApp')
           if(event.data) {
             self.updateRun(event.data);
             $scope.$apply();
+            $('.first').hide();
+            $('.first').fadeIn(1000);
             window.runs = $scope.runs;
           }
         }
@@ -26,16 +29,17 @@ angular.module('delinquoFrontendApp')
     };
 
     this.updateRun = function(run) {
+      var run = JSON.parse(run);
       console.log('updating run');
-//      for(var i = 0; i < $scope.runs.length; i++) {
-//        if($scope.runs[i].id === run.id){
-//          console.log('updating existing run');
-//          $scope.runs[i] = run;
-//          return;
-//        }
-//      }
+      for(var i = 0; i < $scope.runs.length; i++) {
+        if($scope.runs[i].id === run.id){
+          console.log('updating existing run');
+          $scope.runs[i] = run;
+          return;
+        }
+      }
       console.log('adding new run');
-      $scope.runs.push(JSON.parse(run));
+      $scope.runs.unshift(run);
     };
 
     delinquo.getProject($routeParams.project, self.serviceSuccess, self.serviceError);
