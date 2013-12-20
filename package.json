@@ -1,6 +1,6 @@
 {
   "name": "delinquo-frontend",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -46,5 +46,23 @@
   },
   "scripts": {
     "test": "grunt test"
-  }
+  },
+  "description": "Angular Front End for Delinquo",
+  "main": "Gruntfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jamesruston/delinquo-frontend.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/jamesruston/delinquo-frontend/issues"
+  },
+  "keywords": [
+    "delinquo",
+    "heroku"
+  ]
 }
